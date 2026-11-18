@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160b0e">
+  <title>Registro dos Súditos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+ :root{--bg:#10090b;--panel:#1b1014;--panel2:#241419;--line:#56303a;--red:#9d3448;--red2:#c05263;--gold:#c8a875;--text:#f3e9e5;--muted:#b9a7a6;--green:#76b69a;--shadow:0 24px 70px #0008}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 10%,#4a1722 0,transparent 34%),radial-gradient(ellipse at 90% 75%,#32131c 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(45deg,transparent 48%,#c49a6c 49%,transparent 50%);background-size:46px 46px;mask-image:linear-gradient(90deg,#000,transparent 35%,transparent 65%,#000)}.ambient{position:fixed;width:280px;height:280px;border:1px solid #a64a5b33;border-radius:50%;pointer-events:none}.ambient-one{top:130px;left:-220px}.ambient-two{right:-220px;bottom:40px}.topbar{height:78px;border-bottom:1px solid #ffffff12;background:#0d0709d9;backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100% - 1180px)/2));position:relative;z-index:2}.brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-family:Cinzel,serif;letter-spacing:2px}.brand-mark{color:var(--gold);font-size:30px}.brand b,.brand small{display:block}.brand b{font-size:14px}.brand small{font-size:9px;color:var(--gold);letter-spacing:4px;margin-top:3px}.top-actions{display:flex;align-items:center;gap:16px}.connection{font-size:11px;color:var(--muted)}.connection i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:6px}.connection.online i{background:var(--green)}.shell{width:min(1180px,calc(100% - 36px));margin:52px auto 90px;position:relative;z-index:1}.auth-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;min-height:620px}.intro{padding:25px 0}.eyebrow{font-size:10px;letter-spacing:2.5px;color:var(--gold);font-weight:700;margin:0 0 16px}.intro h1,.welcome-row h1{font:600 clamp(36px,5vw,60px)/1.12 Cinzel,serif;margin:0 0 22px}.intro h1 em,.welcome-row h1 em{font-style:normal;color:var(--red2)}.intro-copy{max-width:480px;color:var(--muted);line-height:1.8;font-size:14px}.ornament{display:flex;align-items:center;gap:12px;color:var(--gold);width:250px;margin:35px 0}.ornament span{height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:1}.ornament span:last-child{transform:rotate(180deg)}.feature-row{margin:18px 0;color:#e7d9d5;font-size:13px}.feature-row span{font:600 12px Cinzel;color:var(--red2);margin-right:16px}.panel{background:linear-gradient(145deg,#24151b,#160d11);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:14px;padding:34px;position:relative}.panel:before,.character-sheet:before{content:"✦";position:absolute;top:13px;right:17px;color:#9d6a5b;font-size:14px}.auth-panel{max-width:470px;width:100%;justify-self:end}.panel-heading h2,.rules-panel h2,.section-heading h2{font:600 27px Cinzel,serif;margin:0 0 8px}.panel-heading>p:not(.eyebrow),.muted{color:var(--muted);font-size:13px;line-height:1.65}.button{border:0;border-radius:7px;padding:13px 17px;font:700 11px Inter;letter-spacing:.7px;cursor:pointer;transition:.2s}.button:hover{transform:translateY(-1px);filter:brightness(1.12)}.button:disabled{opacity:.4;cursor:not-allowed;transform:none}.button-primary{background:linear-gradient(110deg,#8c293d,#b34458);color:white;box-shadow:0 8px 22px #8c293d33}.button-outline{border:1px solid var(--line);background:#211218;color:#f2dfdb}.button-quiet{background:transparent;color:var(--muted);border:1px solid #ffffff22;padding:9px 13px}.google-button{width:100%;background:#f8f5f2;color:#2a2020;display:flex;justify-content:center;align-items:center;gap:12px;margin:24px 0 19px}.google-g{font-weight:800;color:#4285f4;font-size:17px}.separator{display:flex;align-items:center;gap:12px;color:#8f7d7d;font-size:9px;letter-spacing:1.5px;margin:16px 0}.separator:before,.separator:after{content:"";height:1px;background:#ffffff1c;flex:1}form label{display:block;font-size:11px;color:#d8c7c4;font-weight:600;margin:14px 0}input,textarea{display:block;width:100%;margin-top:8px;border:1px solid #58313b;background:#10090c;color:var(--text);border-radius:6px;padding:12px 13px;font:13px Inter;outline:none;transition:.2s}input:focus,textarea:focus{border-color:var(--red2);box-shadow:0 0 0 3px #b344581c}textarea{resize:vertical;line-height:1.5}.form-actions{display:flex;align-items:center;gap:18px;margin-top:18px}.form-actions .button{min-width:130px}.text-button{background:none;border:0;color:#d58a93;font-size:11px;cursor:pointer}.fineprint{font-size:10px;color:#907e7e;line-height:1.6;margin-top:20px}.message{font-size:12px;min-height:16px;color:#e7a0a7;line-height:1.5}.message.success{color:var(--green)}.hidden{display:none!important}.rules-panel{max-width:760px;margin:35px auto;padding:42px}.rules-list{list-style:none;padding:0;counter-reset:rules;margin:28px 0}.rules-list li{counter-increment:rules;display:grid;grid-template-columns:42px 1fr;gap:4px 14px;padding:17px 0;border-bottom:1px solid #ffffff12}.rules-list li:before{content:"0" counter(rules);grid-row:span 2;color:var(--red2);font:600 15px Cinzel}.rules-list b{font:600 14px Cinzel}.rules-list span{color:var(--muted);font-size:12px;line-height:1.6}.consent{display:flex;align-items:center;gap:10px;margin:26px 0!important}.consent input{width:17px;height:17px;margin:0;accent-color:var(--red)}.welcome-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}.welcome-row h1{font-size:clamp(30px,4vw,44px);margin-bottom:8px}.welcome-row .muted{margin:0}.user-chip{display:flex;align-items:center;gap:10px;background:#ffffff0b;border:1px solid #ffffff17;border-radius:30px;padding:7px 14px 7px 7px;font-size:12px}.avatar-mini{width:30px;height:30px;border-radius:50%;background:#8c293d;display:grid;place-items:center;font-family:Cinzel}.tabs{display:flex;gap:7px;border-bottom:1px solid #ffffff20;margin-bottom:28px;overflow:auto}.tab{white-space:nowrap;background:none;border:0;color:var(--muted);padding:14px 18px;font:600 11px Inter;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:#fff;border-color:var(--red2)}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.stat-card{background:linear-gradient(135deg,#28161d,#1a1014);border:1px solid var(--line);border-radius:10px;padding:20px}.stat-card span{display:block;color:var(--muted);font-size:9px;letter-spacing:1.5px}.stat-card b{display:block;font:600 32px Cinzel;margin-top:9px}.section-heading{display:flex;align-items:end;justify-content:space-between;margin:34px 0 18px}.section-heading h2{font-size:24px}.legend{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;display:inline-block}.dot.occupied{background:var(--red2)}.dot.free{background:var(--green)}.roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.role-card{background:#1b1115;border:1px solid #4c2a33;border-radius:9px;padding:18px;min-height:126px;display:flex;flex-direction:column;justify-content:space-between}.role-card h3{font:600 15px Cinzel;margin:0 0 7px}.role-card p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}.role-status{font-size:9px;letter-spacing:1px;margin-top:17px;color:var(--green)}.role-status.taken{color:#dc8993}.role-owner{font-size:10px;color:#d8c7c4;margin-top:5px}.character-sheet{position:relative;background:linear-gradient(135deg,#24161b,#160e12);border:1px solid #87515a;border-radius:12px;padding:25px;box-shadow:var(--shadow)}.sheet-top{display:grid;grid-template-columns:250px 1fr;gap:25px}.photo-frame{width:100%;aspect-ratio:3/4;border:1px solid var(--gold);background:linear-gradient(145deg,#28171d,#0c080a);display:grid;place-items:center;overflow:hidden;position:relative}.photo-frame img{width:100%;height:100%;object-fit:cover;transform-origin:center}.photo-frame:after{content:"";position:absolute;inset:7px;border:1px solid #c8a87566;pointer-events:none}.photo-frame #photoPlaceholder{text-align:center;color:var(--gold);display:flex;flex-direction:column;gap:8px}.photo-frame #photoPlaceholder span{font-size:34px}.photo-frame #photoPlaceholder b{font:600 13px Cinzel;letter-spacing:2px}.photo-frame #photoPlaceholder small{font-size:9px;color:var(--muted)}.full{width:100%;margin-top:10px}.photo-tools{background:#10090c;border:1px solid #56303a;padding:10px;border-radius:7px;margin-top:10px}.photo-tools label{font-size:10px;margin:8px 0}.photo-tools input{padding:0;border:0;box-shadow:none}.identity-fields label:first-child{margin-top:0}.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.sheet-section{border-top:1px solid #ffffff20;margin-top:22px;padding-top:18px}.sheet-section h3{font:600 13px Cinzel;color:var(--gold);letter-spacing:2px;margin:0 0 12px}.vital-fields{margin-top:18px}.sheet-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff20;padding-top:18px;margin-top:22px}.save-state{font-size:10px;color:var(--muted)}.admin-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.compact-panel{padding:23px;margin-bottom:15px}.compact-panel h3{font:600 15px Cinzel;margin:0 0 15px}.admin-people{display:grid;gap:9px}.person-row{display:flex;justify-content:space-between;gap:12px;padding:10px;border-bottom:1px solid #ffffff12;font-size:11px;align-items:center}.person-row select{max-width:190px;margin:0;padding:8px;font-size:10px}.role-manage-list{display:grid;gap:10px}.role-manage-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px;border:1px solid #ffffff18;border-radius:8px;background:#130b0f}.role-manage-info{min-width:0}.role-manage-info strong{font:600 13px Cinzel}.role-manage-info small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.5}.role-manage-actions{display:flex;gap:7px;flex-shrink:0}.role-manage-actions .button{padding:8px 10px}.system-role{font-size:9px;color:var(--gold);margin-left:7px;letter-spacing:.7px}.npc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.npc-card{background:#1b1115;border:1px solid #4c2a33;border-radius:9px;padding:16px}.npc-card img{width:100%;height:180px;object-fit:cover;border-radius:6px;margin-bottom:10px}.npc-card h3{font:600 16px Cinzel;margin:4px 0 8px}.npc-card p{font-size:11px;color:var(--muted);line-height:1.55;white-space:pre-wrap}.npc-actions{display:flex;gap:8px;margin-top:12px}.npc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.empty-state{grid-column:1/-1;padding:30px;text-align:center;border:1px dashed #70404b;border-radius:9px;color:var(--muted);font-size:12px}footer{border-top:1px solid #ffffff12;padding:24px;text-align:center;color:var(--gold);font:600 10px Cinzel;letter-spacing:2px}footer small{display:block;color:#8e7d7d;font:10px Inter;letter-spacing:0;margin-top:8px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#26171d;border:1px solid var(--red);padding:12px 18px;border-radius:8px;font-size:12px;z-index:5;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}code{color:#e6a2aa}
+@media(max-width:850px){.auth-layout{grid-template-columns:1fr;gap:15px}.intro{padding:0}.auth-panel{justify-self:stretch;max-width:none}.shell{margin-top:35px}.roles-grid{grid-template-columns:repeat(2,1fr)}.admin-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.topbar{height:66px;padding:0 17px}.brand b{font-size:12px}.connection{font-size:9px}.shell{width:calc(100% - 24px);margin:28px auto 55px}.panel{padding:23px}.intro h1{font-size:38px}.welcome-row{align-items:flex-start;gap:15px;flex-direction:column}.stats-grid{gap:8px}.stat-card{padding:13px}.stat-card span{font-size:8px;letter-spacing:.6px}.stat-card b{font-size:25px}.roles-grid{grid-template-columns:1fr 1fr;gap:8px}.role-card{padding:13px;min-height:120px}.role-card h3{font-size:12px}.legend{font-size:8px;gap:4px}.section-heading{align-items:flex-start;gap:10px;flex-direction:column}.sheet-top{grid-template-columns:1fr;gap:18px}.photo-column{max-width:230px;margin:auto;width:100%}.identity-fields label:first-child{margin-top:0}.two-fields{gap:9px}.character-sheet{padding:16px}.sheet-footer{align-items:flex-start;gap:12px;flex-direction:column}.rules-panel{padding:24px}.rules-list li{grid-template-columns:30px 1fr}.tab{padding:13px 12px;font-size:10px}.person-row{align-items:flex-start;flex-direction:column}.person-row select{max-width:none;width:100%}}
+
+  </style>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Registro dos Súditos">
+      <span class="brand-mark">✦</span><span><b>REGISTRO</b><small>DOS SÚDITOS</small></span>
+    </a>
+    <div class="top-actions"><span id="connectionState" class="connection"><i></i> Modo local</span><button id="logoutBtn" class="button button-quiet hidden">Sair</button></div>
+  </header>
+
+  <main class="shell">
+    <section id="authView" class="auth-layout">
+      <div class="intro">
+        <p class="eyebrow">ARQUIVO OFICIAL · CAMPANHAS</p>
+        <h1>Seu lugar.<br><em>Sua responsabilidade.</em></h1>
+        <p class="intro-copy">Um registro organizado para os participantes, seus cargos e suas fichas. Cada posição tem um responsável. Cada informação tem seu espaço.</p>
+        <div class="ornament"><span></span> ✦ <span></span></div>
+        <div class="feature-row"><span>01</span> Cargos sem duplicidade</div>
+        <div class="feature-row"><span>02</span> Fichas individuais</div>
+        <div class="feature-row"><span>03</span> Registro de presença e responsabilidade</div>
+      </div>
+      <section class="panel auth-panel">
+        <div class="panel-heading"><p class="eyebrow">ACESSO AO REGISTRO</p><h2>Identifique-se</h2><p>Entre com sua conta ou crie seu acesso.</p></div>
+        <button id="googleBtn" class="button google-button" style="display:none"><span class="google-g">G</span> Google (disponível na versão publicada)</button>
+        <div class="separator"><span>CRIE SUA CONTA COM E-MAIL</span></div>
+        <form id="authForm">
+          <label>E-mail<input id="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+          <label>Senha<input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="Mínimo de 8 caracteres" required></label>
+          <div class="form-actions"><button class="button button-primary" type="submit" id="loginBtn">Entrar</button><button class="text-button" type="button" id="signupBtn">Criar cadastro</button></div>
+        </form>
+        <button id="forgotBtn" class="text-button" type="button" style="margin-top:14px">Esqueci minha senha</button>
+        <section id="recoveryPanel" class="hidden" style="border-top:1px solid #ffffff20;margin-top:18px;padding-top:12px">
+          <p class="eyebrow">RECUPERAÇÃO DE ACESSO</p>
+          <p class="muted" id="recoveryIntro">Informe o e-mail cadastrado. Enviaremos um link seguro para redefinir sua senha.</p>
+          <label>E-mail da conta<input id="recoveryEmail" type="email" autocomplete="email" placeholder="voce@email.com"></label>
+          <div id="localRecoveryFields" class="hidden">
+            <label>Nova senha<input id="newPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Mínimo de 8 caracteres"></label>
+            <label>Confirme a nova senha<input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Digite novamente"></label>
+          </div>
+          <div class="form-actions"><button id="recoveryAction" class="button button-primary" type="button">Enviar link</button><button id="cancelRecovery" class="text-button" type="button">Cancelar</button></div>
+          <p id="recoveryMessage" class="message" role="status"></p>
+        </section>
+        <p class="fineprint">Ao continuar, você deverá aceitar as regras do grupo antes de acessar o painel.</p>
+        <p id="authMessage" class="message" role="status"></p>
+      </section>
+    </section>
+
+    <section id="rulesView" class="panel rules-panel hidden">
+      <p class="eyebrow">ETAPA OBRIGATÓRIA · TERMO DE RESPONSABILIDADE</p>
+      <h2>Regras de participação</h2>
+      <p class="muted">Leia atentamente. O painel será liberado após a confirmação.</p>
+      <ol class="rules-list">
+        <li><b>Aviso de ausência</b><span>Caso não possa comparecer, informe o motivo da ausência no grupo.</span></li>
+        <li><b>Horário do aviso</b><span>A justificativa deverá ser enviada antes de sair para a escola (a campanha).</span></li>
+        <li><b>Presença nas campanhas</b><span>O participante deverá comparecer sempre às campanhas.</span></li>
+        <li><b>Responsabilidade</b><span>Mantenha seu cargo atualizado e respeite as obrigações correspondentes.</span></li>
+      </ol>
+      <label class="consent"><input type="checkbox" id="acceptRules"><span>Li e concordo com todas as regras acima.</span></label>
+      <button id="acceptBtn" class="button button-primary" disabled>Confirmar e acessar o painel</button>
+      <p id="rulesMessage" class="message" role="status"></p>
+    </section>
+
+    <section id="appView" class="hidden">
+      <div class="welcome-row"><div><p class="eyebrow" id="welcomeEyebrow">PAINEL DO PARTICIPANTE</p><h1 id="welcomeTitle">Bem-vindo ao <em>Registro</em></h1><p class="muted" id="welcomeCopy">Gerencie seu cargo e mantenha sua ficha atualizada.</p></div><div class="user-chip"><span class="avatar-mini" id="userInitial">S</span><span id="userLabel">Participante</span></div></div>
+      <nav class="tabs"><button class="tab active" data-tab="overview">Visão geral</button><button class="tab participant-only" data-tab="sheet">Minha ficha</button><button class="tab master-only hidden" data-tab="npcs">Arquivo de NPCs</button><button class="tab admin-only hidden" data-tab="admin">Administração</button></nav>
+
+      <section id="overviewTab" class="tab-content">
+        <div class="stats-grid">
+          <article class="stat-card"><span>CARGOS CADASTRADOS</span><b id="totalRoles">0</b></article>
+          <article class="stat-card"><span>OCUPADOS</span><b id="occupiedRoles">0</b></article>
+          <article class="stat-card"><span>DISPONÍVEIS</span><b id="freeRoles">0</b></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">QUADRO DE POSIÇÕES</p><h2>Cargos do grupo</h2></div><span class="legend"><i class="dot occupied"></i> Ocupado <i class="dot free"></i> Disponível</span></div>
+        <div id="rolesGrid" class="roles-grid"></div>
+      </section>
+
+      <section id="sheetTab" class="tab-content hidden">
+        <div class="section-heading"><div><p class="eyebrow">REGISTRO INDIVIDUAL</p><h2>Ficha do participante</h2></div><span class="save-state" id="saveState">Não salvo</span></div>
+        <form id="sheetForm" class="character-sheet">
+          <div class="sheet-top">
+            <div class="photo-column">
+              <div class="photo-frame" id="photoFrame"><img id="photoPreview" alt="Prévia da fotografia" class="hidden"><div id="photoPlaceholder"><span>✦</span><b>RETRATO</b><small>Adicione uma fotografia</small></div></div>
+              <input id="photoInput" type="file" accept="image/*" class="hidden">
+              <button type="button" class="button button-outline full" id="choosePhoto">Enviar / substituir foto</button>
+              <div id="photoTools" class="photo-tools hidden"><label>Zoom <input type="range" id="photoZoom" min="1" max="2.5" step=".05" value="1"></label><label>Horizontal <input type="range" id="photoX" min="0" max="100" value="50"></label><label>Vertical <input type="range" id="photoY" min="0" max="100" value="50"></label></div>
+            </div>
+            <div class="identity-fields">
+              <label>Nome de registro<input id="sheetName" maxlength="70" placeholder="Nome do personagem"></label>
+              <div class="two-fields"><label>Idade<input id="age" maxlength="20" placeholder="Idade"></label><label>Cargo atual<input id="myRole" readonly placeholder="Nenhum cargo atribuído"></label></div>
+              <label>Gostos<textarea id="likes" rows="3" maxlength="500" placeholder="O que seu personagem gosta..."></textarea></label>
+              <label>Desgostos<textarea id="dislikes" rows="3" maxlength="500" placeholder="O que seu personagem não gosta..."></textarea></label>
+            </div>
+          </div>
+          <div class="sheet-section"><h3>INVENTÁRIO</h3><label>Itens<textarea id="items" rows="3" maxlength="1200" placeholder="Liste os itens e equipamentos..."></textarea></label></div>
+          <div class="two-fields vital-fields"><label>VIDA<input id="life" maxlength="100" placeholder="Ex.: 100 / 100"></label><label>SANIDADE<input id="sanity" maxlength="100" placeholder="Ex.: 80 / 100"></label></div>
+          <div class="sheet-section"><h3>HABILIDADES</h3><label>Competências e habilidades<textarea id="skills" rows="4" maxlength="1600" placeholder="Descreva as habilidades..."></textarea></label></div>
+          <div class="sheet-footer"><span class="muted">As alterações são vinculadas à sua conta.</span><button class="button button-primary" type="submit">Salvar ficha</button></div>
+        </form>
+        <p id="sheetMessage" class="message"></p>
+      </section>
+
+      <section id="npcsTab" class="tab-content hidden">
+        <div class="section-heading"><div><p class="eyebrow">PERSONAGENS NÃO JOGÁVEIS</p><h2>Arquivo de NPCs</h2></div></div>
+        <form id="npcForm" class="panel compact-panel">
+          <h3 id="npcFormTitle">Cadastrar NPC</h3>
+          <input id="npcId" type="hidden">
+          <div class="npc-form-grid">
+            <label>Nome do NPC<input id="npcName" maxlength="100" required placeholder="Nome do personagem"></label>
+            <label>Fotografia (opcional)<input id="npcPhoto" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label>
+          </div>
+          <label>Descrição<textarea id="npcDescription" rows="2" maxlength="1000" placeholder="Resumo do personagem"></textarea></label>
+          <div class="npc-form-grid"><label>Aparência<textarea id="npcAppearance" rows="3" maxlength="1500" placeholder="Características visuais"></textarea></label><label>Personalidade<textarea id="npcPersonality" rows="3" maxlength="1500" placeholder="Comportamento e personalidade"></textarea></label></div>
+          <div class="form-actions"><button class="button button-primary" type="submit">Salvar NPC</button><button class="button button-outline" type="button" id="cancelNpcEdit">Cancelar edição</button></div>
+          <p id="npcMessage" class="message"></p>
+        </form>
+        <div class="section-heading"><div><h2>Personagens registrados</h2></div></div>
+        <div id="npcList" class="npc-grid"><div class="empty-state">Carregando arquivo...</div></div>
+      </section>
+
+      <section id="adminTab" class="tab-content hidden">
+        <div class="section-heading"><div><p class="eyebrow">CONTROLE DO GRUPO</p><h2>Administração</h2></div></div>
+        <div class="admin-grid">
+          <form id="roleForm" class="panel compact-panel"><h3 id="roleFormHeading">Cadastrar novo cargo</h3><input id="editingRoleId" type="hidden"><label>Nome do cargo<input id="roleTitle" maxlength="60" placeholder="Ex.: Comandante" required></label><label>Descrição<input id="roleDescription" maxlength="160" placeholder="Responsabilidades do cargo"></label><div class="form-actions"><button id="roleSubmit" class="button button-primary" type="submit">Adicionar cargo</button><button id="cancelRoleEdit" class="button button-outline hidden" type="button">Cancelar</button></div><p id="adminMessage" class="message"></p></form>
+          <div class="panel compact-panel"><h3>Participantes e cargos</h3><div id="adminPeople" class="admin-people"></div></div>
+        </div>
+        <div class="panel compact-panel" id="roleManagerPanel"><div class="section-heading" style="margin:0 0 15px"><div><h3 style="margin:0">Gerenciar cargos</h3><p class="muted" style="margin:6px 0 0">Clique em <strong>Editar cargos</strong> para abrir a lista. Depois escolha Renomear / editar ou Excluir.</p></div><button id="roleManagerToggle" class="button button-primary" type="button" aria-expanded="false" aria-controls="roleManagerList">Editar cargos <span aria-hidden="true">▾</span></button></div><div id="roleManagerList" class="role-manage-list hidden" aria-label="Lista de cargos para edição"></div></div>
+        <div class="panel compact-panel"><h3>Permissão administrativa</h3><p class="muted">A primeira conta que entrar enquanto não houver administrador será promovida. O administrador pode visualizar os e-mails cadastrados, atribuir cargos e cadastrar novos cargos. No modo local, só aparecem contas criadas neste mesmo navegador; os dados não são compartilhados entre dispositivos.</p></div>
+      </section>
+    </section>
+  </main>
+  <footer><span>✦ REGISTRO DOS SÚDITOS ✦</span><small>Organização, responsabilidade e memória das campanhas.</small></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Chaves públicas podem ficar no navegador; nunca coloque aqui service_role ou secret key.
+    window.APP_CONFIG = {
+      SUPABASE_URL: "https://poictttaenznppkkmnfw.supabase.co",
+      SUPABASE_ANON_KEY: "sb_publishable_g4U74yPA0Mc-CQuLgUhjGQ_jaM_jNsB",
+      STORAGE_BUCKET: "character-photos"
+    };
+  </script>
+  <script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const cfg = window.APP_CONFIG || {};
+  const configured = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && window.supabase);
+  const db = configured ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY) : null;
+  const localKey = "registro_suditos_v1";
+  let user = null, profile = null, photoFile = null, photoUrl = null, currentPhotoPath = null, roles = [], assignments = [], people = [], isMaster = false, npcs = [], passwordRecoveryMode = false;
+  let local = JSON.parse(localStorage.getItem(localKey) || '{"profiles":[],"roles":[],"assignments":[],"sheets":{},"npcs":[]}');
+  const msg = (id, text, ok=false) => { const el=$(id); if(!el)return; el.textContent=text; el.className="message"+(ok?" success":""); };
+  const toast = text => { const el=$("toast");el.textContent=text;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600); };
+  const saveLocal = () => localStorage.setItem(localKey, JSON.stringify(local));
+  const show = id => { ["authView","rulesView","appView"].forEach(x=>$(x).classList.toggle("hidden",x!==id)); };
+  const setBusy = (el,busy,label) => {el.disabled=busy;if(busy)el.dataset.old=el.textContent;el.textContent=busy?label:(el.dataset.old||el.textContent);};
+  function tabs(name){
+    // Impede abrir áreas restritas mesmo que alguém tente chamar a aba manualmente.
+    if(name==="admin" && !profile?.is_admin) name="overview";
+    if(name==="npcs" && !isMaster && !profile?.is_admin) name="overview";
+    if(name==="sheet" && isMaster) name="overview";
+    document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
+    ["overview","sheet","admin","npcs"].forEach(t=>$(t+"Tab").classList.toggle("hidden",t!==name));
+  }
+  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>tabs(b.dataset.tab)));
+  function renderConnection(){ $("connectionState").classList.toggle("online",configured);$("connectionState").innerHTML=`<i></i>${configured?"Conectado ao Supabase":"Modo local (demonstração)"}`;}
+  async function refreshUser(){
+    if(configured){const {data:{session}}=await db.auth.getSession();user=session?.user||null;if(!user){show("authView");$("logoutBtn").classList.add("hidden");return;}const {data,error}=await db.from("profiles").select("*").eq("id",user.id).maybeSingle();if(error){msg("authMessage",error.message);return;}profile=data;if(!profile){const {data:d,error:e}=await db.from("profiles").insert({id:user.id,display_name:user.user_metadata?.full_name||user.email,character_name:user.user_metadata?.character_name||null}).select().single();if(e){msg("authMessage",e.message);return;}profile=d;}}
+    else {user=local.currentUser||null;profile=user?local.profiles.find(p=>p.id===user.id):null;}
+    if(!user){show("authView");$("logoutBtn").classList.add("hidden");return;}
+    // No modo local, promove a conta atualmente autenticada se ainda não existir administrador.
+    // Isso recupera cadastros criados antes da correção, que poderiam ficar sem admin.
+    if(!configured && profile && !local.profiles.some(p=>p.is_admin===true)){
+      profile.is_admin=true;
+      const savedProfile=local.profiles.find(p=>p.id===profile.id);
+      if(savedProfile) savedProfile.is_admin=true;
+      saveLocal();
+    }
+    $("logoutBtn").classList.remove("hidden");$("userLabel").textContent=profile?.display_name||user.email||"Participante";$("userInitial").textContent=($("userLabel").textContent[0]||"S").toUpperCase();
+    if(configured && user.app_metadata?.provider==="google" && !user.user_metadata?.password_set){/* password setup is handled below via onboarding flag */}
+    if(!profile?.accepted_rules){show("rulesView");return;}
+    show("appView");await loadData();if(!isMaster)await loadSheet();tabs(isMaster?"npcs":"overview");
+  }
+  async function signInEmail(email,password,signup=false,characterName=""){
+    if(configured){const result=signup?await db.auth.signUp({email,password,options:{data:{display_name:email.split("@")[0],character_name:characterName}}}):await db.auth.signInWithPassword({email,password});if(result.error)throw result.error;if(signup&&!result.data.session)throw new Error("Cadastro criado. Confirme seu e-mail antes de entrar.");if(signup&&result.data.user){const {error}=await db.from("profiles").upsert({id:result.data.user.id,display_name:email.split("@")[0],character_name:characterName||null},{onConflict:"id"});if(error)throw error;}}
+    else {if(signup){if(local.profiles.some(p=>p.email===email))throw new Error("Este e-mail já está cadastrado.");const p={id:crypto.randomUUID(),email,display_name:email.split("@")[0],character_name:characterName||null,accepted_rules:false,is_admin:local.profiles.length===0,demoPassword:password};local.profiles.push(p);local.currentUser={id:p.id,email};saveLocal();}else{const p=local.profiles.find(p=>p.email===email);if(!p)throw new Error("Cadastro não encontrado. Crie sua conta primeiro.");if(p.demoPassword!==password)throw new Error("E-mail ou senha incorretos.");local.currentUser={id:p.id,email};saveLocal();}}
+    await refreshUser();
+  }
+  $("authForm").addEventListener("submit",async e=>{e.preventDefault();const b=$("loginBtn");setBusy(b,true,"Aguarde...");try{await signInEmail($("email").value.trim(),$("password").value,false);}catch(err){msg("authMessage",err.message||"Não foi possível entrar.");}finally{b.disabled=false;b.textContent="Entrar";}});
+  $("signupBtn").addEventListener("click",async()=>{const email=$("email").value.trim(),password=$("password").value;if(!email||password.length<8){msg("authMessage","Informe um e-mail válido e uma senha com pelo menos 8 caracteres.");return;}const characterName="";try{await signInEmail(email,password,true,characterName);}catch(err){msg("authMessage",err.message);}});
+  $("forgotBtn").addEventListener("click",()=>{$("recoveryPanel").classList.remove("hidden");$("recoveryEmail").value=$("email").value.trim();$("localRecoveryFields").classList.toggle("hidden",configured);$("recoveryAction").textContent=configured?"Enviar link de recuperação":"Redefinir senha";msg("recoveryMessage","");});
+  $("cancelRecovery").addEventListener("click",()=>{$("recoveryPanel").classList.add("hidden");msg("recoveryMessage","");});
+  $("recoveryAction").addEventListener("click",async()=>{try{if(configured&&passwordRecoveryMode){const np=$("newPassword").value;if(np.length<8||np!==$("confirmPassword").value)throw new Error("Confira a nova senha (mínimo 8 caracteres) e a confirmação.");const {error:upError}=await db.auth.updateUser({password:np});if(upError)throw upError;msg("recoveryMessage","Senha alterada com sucesso.",true);passwordRecoveryMode=false;return;}const email=$("recoveryEmail").value.trim();if(!email){msg("recoveryMessage","Informe o e-mail cadastrado.");return;}if(configured){const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.href.split("#")[0]});if(error)throw error;msg("recoveryMessage","Enviamos um link para seu e-mail. Abra-o neste mesmo site para definir uma nova senha.",true);}else{const normalizedEmail=email.trim().toLowerCase();const p=local.profiles.find(x=>(x.email||"").trim().toLowerCase()===normalizedEmail);const next=$("newPassword").value;const confirm=$("confirmPassword").value;if(!p)throw new Error("Não encontrei esse e-mail neste navegador. Confira se está usando o mesmo Chrome e a mesma versão do arquivo em que criou a conta.");if(next.length<8)throw new Error("A nova senha precisa ter pelo menos 8 caracteres.");if(next!==confirm)throw new Error("As senhas não coincidem.");p.demoPassword=next;saveLocal();msg("recoveryMessage","Senha alterada neste navegador. Faça login com a nova senha.",true);$("password").value=next;}}catch(err){msg("recoveryMessage",err.message||"Não foi possível recuperar a conta.");}});
+  if(configured){db.auth.onAuthStateChange((event)=>{if(event==="PASSWORD_RECOVERY"){passwordRecoveryMode=true;$("recoveryPanel").classList.remove("hidden");$("localRecoveryFields").classList.remove("hidden");$("recoveryEmail").parentElement.classList.add("hidden");$("recoveryIntro").textContent="Escolha e confirme sua nova senha.";$("recoveryAction").textContent="Salvar nova senha";msg("recoveryMessage","");}});}
+
+  $("googleBtn").addEventListener("click",async()=>{if(!configured){msg("authMessage","Ative o provedor Google em Authentication → Sign In / Providers no Supabase para usar o Google OAuth.");return;}const {error}=await db.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+location.pathname}});if(error)msg("authMessage",error.message);});
+  $("logoutBtn").addEventListener("click",async()=>{if(configured)await db.auth.signOut();else{local.currentUser=null;saveLocal();}user=null;profile=null;show("authView");$("logoutBtn").classList.add("hidden");});
+  $("acceptRules").addEventListener("change",e=>$("acceptBtn").disabled=!e.target.checked);
+  $("acceptBtn").addEventListener("click",async()=>{try{if(configured){const {error}=await db.from("profiles").update({accepted_rules:true,accepted_rules_at:new Date().toISOString()}).eq("id",user.id);if(error)throw error;profile.accepted_rules=true;}else{profile.accepted_rules=true;saveLocal();}await refreshUser();}catch(e){msg("rulesMessage",e.message);}});
+  async function loadData(){
+    if(configured){let a=await db.from("roles").select("*").eq("is_active",true).order("title");if(a.error)throw a.error;roles=a.data;let b=await db.from("role_assignments").select("role_id,user_id,profiles(display_name,email),roles(title)");if(b.error)throw b.error;assignments=b.data;if(profile?.is_admin){let c=await db.from("profiles").select("id,display_name,email,is_admin,accepted_rules");if(c.error)throw c.error;people=c.data;}else{people=[];} }
+    else{roles=local.roles;assignments=local.assignments.map(a=>({...a,profiles:local.profiles.find(p=>p.id===a.user_id),roles:local.roles.find(r=>r.id===a.role_id)}));people=local.profiles;}
+    const myAssignment=assignments.find(a=>a.user_id===user.id);isMaster=String(myAssignment?.roles?.title||"").trim().toLowerCase()==="mestre";
+    $("totalRoles").textContent=roles.length;$("occupiedRoles").textContent=assignments.length;$("freeRoles").textContent=Math.max(0,roles.length-assignments.length);
+    const mine=assignments.find(a=>a.user_id===user.id);$("myRole").value=mine?.roles?.title||"Nenhum cargo atribuído";
+    $("rolesGrid").innerHTML=roles.length?roles.map(r=>{const a=assignments.find(x=>x.role_id===r.id);return `<article class="role-card"><div><h3>${esc(r.title)}</h3><p>${esc(r.description||"Cargo sem descrição.")}</p></div><div><div class="role-status ${a?"taken":""}">${a?"● OCUPADO":"● DISPONÍVEL"}</div>${a?`<div class="role-owner">${esc(a.profiles?.display_name||a.profiles?.email||"Participante")}</div>`:""}</div></article>`}).join(""):`<div class="empty-state">Nenhum cargo cadastrado ainda. O administrador pode adicionar os cargos na aba Administração.</div>`;
+    document.querySelectorAll(".admin-only").forEach(el=>el.classList.toggle("hidden",!profile?.is_admin));document.querySelectorAll(".master-only").forEach(el=>el.classList.toggle("hidden",!(isMaster||profile?.is_admin)));document.querySelectorAll(".participant-only").forEach(el=>el.classList.toggle("hidden",isMaster));
+    if(isMaster){$("welcomeEyebrow").textContent="MESTRE DA MESA";$("welcomeTitle").textContent="Opa! Tu é o Mestre da Mesa?";$("welcomeCopy").textContent="As paredes falaram tanto de você! Seja bem-vindo. O Arquivo de NPCs está à sua disposição.";}else{$("welcomeEyebrow").textContent="PAINEL DO PARTICIPANTE";$("welcomeTitle").innerHTML="Bem-vindo ao <em>Registro</em>";$("welcomeCopy").textContent="Gerencie seu cargo e mantenha sua ficha atualizada.";}if(isMaster||profile?.is_admin){
+      try{await loadNpcs();}
+      catch(npcError){msg("npcMessage","Não foi possível carregar o arquivo de NPCs: "+(npcError.message||"erro desconhecido."));}
+    }
+    if(profile?.is_admin)renderAdmin();
+  }
+  function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function renderAdmin(){ $("adminPeople").innerHTML=people.map(p=>{const a=assignments.find(x=>x.user_id===p.id);return `<div class="person-row"><span><strong>${esc(p.display_name||"Participante")}${p.id===user.id?" (você)":""}</strong><br><small style="color:var(--muted)">${esc(p.email||"E-mail não disponível")} · ${p.accepted_rules?"Regras aceitas":"Aguardando aceite"}${p.is_admin?" · ADMINISTRADOR":""}</small></span><select aria-label="Cargo de ${esc(p.display_name||p.email||"participante")}" data-person="${p.id}"><option value="">Sem cargo</option>${roles.map(r=>`<option value="${r.id}" ${a?.role_id===r.id?"selected":""}>${esc(r.title)}</option>`).join("")}</select></div>`}).join("")||'<p class="muted">Nenhum participante cadastrado.</p>';
+    document.querySelectorAll("[data-person]").forEach(s=>s.addEventListener("change",async()=>{try{await assignRole(s.dataset.person,s.value||null);await loadData();toast("Atribuição atualizada.");}catch(e){toast(e.message);await loadData();}}));
+    renderRoleManager();
+  }
+  const roleManagerToggle=$("roleManagerToggle");
+  roleManagerToggle.addEventListener("click",()=>{
+    const list=$("roleManagerList");
+    const opening=list.classList.contains("hidden");
+    if(opening){renderRoleManager();list.classList.remove("hidden");roleManagerToggle.innerHTML='Fechar edição <span aria-hidden="true">▴</span>';roleManagerToggle.setAttribute("aria-expanded","true");requestAnimationFrame(()=>list.scrollIntoView({behavior:"smooth",block:"nearest"}));}
+    else{list.classList.add("hidden");roleManagerToggle.innerHTML='Editar cargos <span aria-hidden="true">▾</span>';roleManagerToggle.setAttribute("aria-expanded","false");}
+  });
+  function renderRoleManager(){
+    const host=$("roleManagerList");if(!host)return;
+    host.innerHTML=roles.length?roles.map(r=>{const a=assignments.find(x=>x.role_id===r.id);const protectedRole=String(r.title||"").trim().toLowerCase()==="mestre";return `<div class="role-manage-row"><div class="role-manage-info"><strong>${esc(r.title)}${protectedRole?'<span class="system-role">CARGO DO SISTEMA</span>':''}</strong><small>${esc(r.description||"Sem descrição.")} · ${a?`Ocupado por ${esc(a.profiles?.display_name||a.profiles?.email||"participante")}`:"Disponível"}</small></div><div class="role-manage-actions"><button class="button button-outline" type="button" data-edit-role="${r.id}" ${protectedRole?'disabled title="Cargo reservado para a função especial do Mestre"':''}>Renomear / editar</button><button class="button button-quiet" type="button" data-delete-role="${r.id}" ${protectedRole?'disabled title="O cargo Mestre é protegido"':''}>Excluir</button></div></div>`}).join(""):'<div class="empty-state">Nenhum cargo cadastrado.</div>';
+    host.querySelectorAll("[data-edit-role]").forEach(b=>b.addEventListener("click",()=>{const r=roles.find(x=>x.id===b.dataset.editRole);if(!r)return;$("editingRoleId").value=r.id;$("roleTitle").value=r.title||"";$("roleDescription").value=r.description||"";$("roleFormHeading").textContent="Editar cargo";$("roleSubmit").textContent="Salvar alterações";$("cancelRoleEdit").classList.remove("hidden");$("roleForm").scrollIntoView({behavior:"smooth",block:"center"});$("roleTitle").focus();}));
+    host.querySelectorAll("[data-delete-role]").forEach(b=>b.addEventListener("click",async()=>{const r=roles.find(x=>x.id===b.dataset.deleteRole);if(!r)return;const count=assignments.filter(x=>x.role_id===r.id).length;const warning=count?` Este cargo está atribuído a ${count} participante(s); a atribuição também será removida.`:"";if(!confirm(`Excluir o cargo “${r.title}”?${warning} Esta ação não pode ser desfeita.`))return;try{if(configured){const d=await db.from("role_assignments").delete().eq("role_id",r.id);if(d.error)throw d.error;const x=await db.from("roles").delete().eq("id",r.id);if(x.error)throw x.error;}else{local.assignments=local.assignments.filter(a=>a.role_id!==r.id);local.roles=local.roles.filter(x=>x.id!==r.id);saveLocal();}resetRoleForm();await loadData();toast("Cargo excluído.");}catch(e){toast("Não foi possível excluir: "+e.message);}}));
+  }
+  function resetRoleForm(){ $("roleForm").reset();$("editingRoleId").value="";$("roleFormHeading").textContent="Cadastrar novo cargo";$("roleSubmit").textContent="Adicionar cargo";$("cancelRoleEdit").classList.add("hidden"); }
+  $("cancelRoleEdit").addEventListener("click",resetRoleForm);
+  async function assignRole(userId,roleId){
+    if(configured){const del=await db.from("role_assignments").delete().eq("user_id",userId);if(del.error)throw del.error;if(roleId){const ins=await db.from("role_assignments").insert({user_id:userId,role_id:roleId});if(ins.error)throw ins.error;}}
+    else{local.assignments=local.assignments.filter(a=>a.user_id!==userId&&(!roleId||a.role_id!==roleId));if(roleId)local.assignments.push({user_id:userId,role_id:roleId});saveLocal();}
+  }
+  $("roleForm").addEventListener("submit",async e=>{e.preventDefault();if(!profile?.is_admin)return;const title=$("roleTitle").value.trim(),description=$("roleDescription").value.trim(),editingId=$("editingRoleId").value;try{if(!title)throw new Error("Informe o nome do cargo.");if(roles.some(r=>r.id!==editingId&&String(r.title).trim().toLowerCase()===title.toLowerCase()))throw new Error("Já existe um cargo com esse nome.");if(editingId){const old=roles.find(r=>r.id===editingId);if(String(old?.title||"").trim().toLowerCase()==="mestre")throw new Error("O cargo Mestre é reservado e não pode ser renomeado.");if(configured){const {error}=await db.from("roles").update({title,description}).eq("id",editingId);if(error)throw error;}else{const r=local.roles.find(x=>x.id===editingId);if(r){r.title=title;r.description=description;}saveLocal();}msg("adminMessage","Cargo atualizado com sucesso.",true);}else{if(configured){const {error}=await db.from("roles").insert({title,description});if(error)throw error;}else{local.roles.push({id:crypto.randomUUID(),title,description,is_active:true});saveLocal();}msg("adminMessage","Cargo cadastrado.",true);}resetRoleForm();await loadData();}catch(err){msg("adminMessage",err.message);}});
+  async function loadNpcs(){
+    if(!isMaster&&!profile?.is_admin)return;
+    if(configured){const {data,error}=await db.from("npcs").select("*").order("created_at",{ascending:false});if(error)throw error;npcs=data||[];}
+    else{npcs=local.npcs||[];}
+    renderNpcs();
+  }
+  function renderNpcs(){
+    $("npcList").innerHTML=npcs.length?npcs.map(n=>{let src=n.photo_url||"";if(configured&&n.photo_path){src=db.storage.from(cfg.STORAGE_BUCKET||"character-photos").getPublicUrl(n.photo_path).data.publicUrl;}return `<article class="npc-card">${src?`<img src="${esc(src)}" alt="${esc(n.name)}">`:""}<h3>${esc(n.name)}</h3>${n.description?`<p>${esc(n.description)}</p>`:""}${n.appearance?`<p><strong>Aparência:</strong> ${esc(n.appearance)}</p>`:""}${n.personality?`<p><strong>Personalidade:</strong> ${esc(n.personality)}</p>`:""}<div class="npc-actions"><button class="button button-outline" type="button" data-edit-npc="${n.id}">Editar</button><button class="button button-quiet" type="button" data-delete-npc="${n.id}">Excluir</button></div></article>`}).join(""):'<div class="empty-state">Ainda não há NPCs cadastrados. O primeiro pode ser criado acima.</div>';
+    document.querySelectorAll("[data-edit-npc]").forEach(b=>b.addEventListener("click",()=>{const n=npcs.find(x=>x.id===b.dataset.editNpc);if(!n)return;$("npcId").value=n.id;$("npcName").value=n.name||"";$("npcDescription").value=n.description||"";$("npcAppearance").value=n.appearance||"";$("npcPersonality").value=n.personality||"";$("npcFormTitle").textContent="Editar NPC";$("npcForm").scrollIntoView({behavior:"smooth"});}));
+    document.querySelectorAll("[data-delete-npc]").forEach(b=>b.addEventListener("click",async()=>{if(!confirm("Excluir este NPC?"))return;try{if(configured){const {error}=await db.from("npcs").delete().eq("id",b.dataset.deleteNpc);if(error)throw error;}else{local.npcs=(local.npcs||[]).filter(n=>n.id!==b.dataset.deleteNpc);saveLocal();}await loadNpcs();toast("NPC excluído.");}catch(e){toast(e.message);}}));
+  }
+  function resetNpcForm(){$("npcForm").reset();$("npcId").value="";$("npcFormTitle").textContent="Cadastrar NPC";}
+  $("cancelNpcEdit").addEventListener("click",resetNpcForm);
+  $("npcForm").addEventListener("submit",async e=>{e.preventDefault();if(!isMaster&&!profile?.is_admin)return;const id=$("npcId").value||null;const data={name:$("npcName").value.trim(),description:$("npcDescription").value.trim(),appearance:$("npcAppearance").value.trim(),personality:$("npcPersonality").value.trim()};const file=$("npcPhoto").files[0];try{if(!data.name)throw new Error("Informe o nome do NPC.");if(file){if(!file.type.startsWith("image/"))throw new Error("Escolha um arquivo de imagem.");if(file.size>5*1024*1024)throw new Error("A imagem deve ter até 5 MB.");if(configured){const path=`${user.id}/npcs/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;const up=await db.storage.from(cfg.STORAGE_BUCKET||"character-photos").upload(path,file,{upsert:true});if(up.error)throw up.error;data.photo_path=path;}else{data.photo_url=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(new Error("Não foi possível ler a imagem."));reader.readAsDataURL(file);});}}
+      if(configured){let result;if(id)result=await db.from("npcs").update(data).eq("id",id);else result=await db.from("npcs").insert({...data,created_by:user.id});if(result.error)throw result.error;}else{local.npcs=local.npcs||[];if(id){const i=local.npcs.findIndex(n=>n.id===id);if(i>=0)local.npcs[i]={...local.npcs[i],...data};}else local.npcs.unshift({id:crypto.randomUUID(),...data,created_by:user.id});saveLocal();}
+      resetNpcForm();msg("npcMessage","NPC salvo com sucesso.",true);await loadNpcs();}catch(err){msg("npcMessage",err.message||"Não foi possível salvar o NPC.");}});
+  async function loadSheet(){
+    let s;if(configured){const {data,error}=await db.from("character_sheets").select("*").eq("user_id",user.id).maybeSingle();if(error)throw error;s=data;}else{s=local.sheets[user.id]||{};}
+    ["sheetName","age","likes","dislikes","items","life","sanity","skills"].forEach((id,i)=>$(id).value=s?.[["character_name","age","likes","dislikes","items","life","sanity","skills"][i]]||"");
+    currentPhotoPath=configured?(s?.photo_path||null):null;if(configured && s?.photo_path){const {data}=db.storage.from(cfg.STORAGE_BUCKET||"character-photos").getPublicUrl(s.photo_path);setPhoto(data.publicUrl,s.photo_x??50,s.photo_y??50,s.photo_zoom??1);}else if(!configured && s?.photo_data){setPhoto(s.photo_data,s.photo_x??50,s.photo_y??50,s.photo_zoom??1);}else{ $("photoPreview").classList.add("hidden");$("photoPlaceholder").classList.remove("hidden");$("photoTools").classList.add("hidden");}
+  }
+  function setPhoto(src,x=50,y=50,z=1){$("photoPreview").src=src;$("photoPreview").classList.remove("hidden");$("photoPlaceholder").classList.add("hidden");$("photoTools").classList.remove("hidden");$("photoX").value=x;$("photoY").value=y;$("photoZoom").value=z;updatePhotoTransform();}
+  function updatePhotoTransform(){const im=$("photoPreview");im.style.objectPosition=`${$("photoX").value}% ${$("photoY").value}%`;im.style.transform=`scale(${$("photoZoom").value})`;}
+  ["photoX","photoY","photoZoom"].forEach(id=>$(id).addEventListener("input",updatePhotoTransform));
+  $("choosePhoto").addEventListener("click",()=>$("photoInput").click());
+  $("photoInput").addEventListener("change",e=>{photoFile=e.target.files[0];if(!photoFile)return;if(!photoFile.type.startsWith("image/")){toast("Escolha um arquivo de imagem.");return;}if(photoFile.size>5*1024*1024){toast("A imagem deve ter até 5 MB.");return;}photoUrl=URL.createObjectURL(photoFile);setPhoto(photoUrl);});
+  $("sheetForm").addEventListener("submit",async e=>{e.preventDefault();if(isMaster)return;$("saveState").textContent="Salvando...";const data={character_name:$("sheetName").value.trim(),age:$("age").value.trim(),likes:$("likes").value,dislikes:$("dislikes").value,items:$("items").value,life:$("life").value.trim(),sanity:$("sanity").value.trim(),skills:$("skills").value,photo_x:Number($("photoX").value),photo_y:Number($("photoY").value),photo_zoom:Number($("photoZoom").value),updated_at:new Date().toISOString()};try{
+      if(configured){if(photoFile){const path=`${user.id}/${Date.now()}-${photoFile.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;const up=await db.storage.from(cfg.STORAGE_BUCKET||"character-photos").upload(path,photoFile,{upsert:true});if(up.error)throw up.error;currentPhotoPath=path;}if(currentPhotoPath)data.photo_path=currentPhotoPath;const {error}=await db.from("character_sheets").upsert({user_id:user.id,...data});if(error)throw error;}
+      else{
+        const previous=local.sheets[user.id]||{};
+        if(photoFile){
+          data.photo_data=await new Promise((resolve,reject)=>{
+            const reader=new FileReader();
+            reader.onerror=()=>reject(new Error("Não foi possível ler a fotografia."));
+            reader.onload=()=>{
+              const img=new Image();
+              img.onerror=()=>reject(new Error("O arquivo de imagem não pôde ser aberto."));
+              img.onload=()=>{
+                const max=1200, scale=Math.min(1,max/Math.max(img.width,img.height));
+                const canvas=document.createElement("canvas");
+                canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));
+                canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+                resolve(canvas.toDataURL("image/jpeg",0.78));
+              };
+              img.src=reader.result;
+            };
+            reader.readAsDataURL(photoFile);
+          });
+        }else if(previous.photo_data){data.photo_data=previous.photo_data;}
+        local.sheets[user.id]=data;
+        // Mantém o nome da ficha sincronizado no perfil após a criação da ficha.
+        const ownProfile=local.profiles.find(p=>p.id===user.id);
+        if(ownProfile && data.character_name) ownProfile.character_name=data.character_name;
+        try{saveLocal();}catch(storageError){local.sheets[user.id]=previous;throw new Error("O armazenamento do Chrome ficou sem espaço. Reduza o tamanho da foto e tente novamente.");}
+      }
+      $("saveState").textContent="Salvo agora";msg("sheetMessage","Sua ficha foi salva com sucesso.",true);toast("Ficha atualizada.");photoFile=null;
+    }catch(err){$("saveState").textContent="Falha ao salvar";msg("sheetMessage",err.message||"Erro ao salvar a ficha.");}});
+  renderConnection();
+  if(configured)db.auth.onAuthStateChange(()=>setTimeout(refreshUser,0));
+  refreshUser().catch(e=>msg("authMessage",e.message));
+})();
+  </script>
+</body>
+</html>
