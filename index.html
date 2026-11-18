@@ -204,12 +204,45 @@
     show("appView");await loadData();if(!isMaster)await loadSheet();tabs(isMaster?"npcs":"overview");
   }
   async function signInEmail(email,password,signup=false,characterName=""){
-    if(configured){const result=signup?await db.auth.signUp({email,password,options:{data:{display_name:email.split("@")[0],character_name:characterName}}}):await db.auth.signInWithPassword({email,password});if(result.error)throw result.error;if(signup&&!result.data.session)throw new Error("Cadastro criado. Confirme seu e-mail antes de entrar.");if(signup&&result.data.user){const {error}=await db.from("profiles").upsert({id:result.data.user.id,display_name:email.split("@")[0],character_name:characterName||null},{onConflict:"id"});if(error)throw error;}}
-    else {if(signup){if(local.profiles.some(p=>p.email===email))throw new Error("Este e-mail já está cadastrado.");const p={id:crypto.randomUUID(),email,display_name:email.split("@")[0],character_name:characterName||null,accepted_rules:false,is_admin:local.profiles.length===0,demoPassword:password};local.profiles.push(p);local.currentUser={id:p.id,email};saveLocal();}else{const p=local.profiles.find(p=>p.email===email);if(!p)throw new Error("Cadastro não encontrado. Crie sua conta primeiro.");if(p.demoPassword!==password)throw new Error("E-mail ou senha incorretos.");local.currentUser={id:p.id,email};saveLocal();}}
+    if(configured){
+      const result=signup
+        ? await db.auth.signUp({email,password,options:{data:{display_name:email.split("@")[0],character_name:characterName}}})
+        : await db.auth.signInWithPassword({email,password});
+      if(result.error)throw result.error;
+      if(signup&&!result.data.session){
+        msg("authMessage","Cadastro enviado! Confira a caixa de entrada e o spam do seu e-mail e confirme o endereço para conseguir entrar.",true);
+        return;
+      }
+      if(signup&&result.data.user){
+        const {error}=await db.from("profiles").upsert({id:result.data.user.id,display_name:email.split("@")[0],character_name:characterName||null},{onConflict:"id"});
+        if(error)throw error;
+      }
+    } else {
+      if(signup){
+        const normalized=email.trim().toLowerCase();
+        if(local.profiles.some(p=>(p.email||"").trim().toLowerCase()===normalized))throw new Error("Este e-mail já está cadastrado. Tente entrar em vez de criar outra conta.");
+        const p={id:crypto.randomUUID(),email:normalized,display_name:normalized.split("@")[0],character_name:characterName||null,accepted_rules:false,is_admin:local.profiles.length===0,demoPassword:password};
+        local.profiles.push(p);local.currentUser={id:p.id,email:normalized};saveLocal();
+      } else {
+        const normalized=email.trim().toLowerCase();
+        const p=local.profiles.find(p=>(p.email||"").trim().toLowerCase()===normalized);
+        if(!p)throw new Error("Cadastro não encontrado. Crie sua conta primeiro.");
+        if(p.demoPassword!==password)throw new Error("E-mail ou senha incorretos.");
+        local.currentUser={id:p.id,email:normalized};saveLocal();
+      }
+    }
     await refreshUser();
   }
   $("authForm").addEventListener("submit",async e=>{e.preventDefault();const b=$("loginBtn");setBusy(b,true,"Aguarde...");try{await signInEmail($("email").value.trim(),$("password").value,false);}catch(err){msg("authMessage",err.message||"Não foi possível entrar.");}finally{b.disabled=false;b.textContent="Entrar";}});
-  $("signupBtn").addEventListener("click",async()=>{const email=$("email").value.trim(),password=$("password").value;if(!email||password.length<8){msg("authMessage","Informe um e-mail válido e uma senha com pelo menos 8 caracteres.");return;}const characterName="";try{await signInEmail(email,password,true,characterName);}catch(err){msg("authMessage",err.message);}});
+  $("signupBtn").addEventListener("click",async()=>{
+    const b=$("signupBtn"),email=$("email").value.trim(),password=$("password").value;
+    msg("authMessage","");
+    if(!email||!$("email").checkValidity()||password.length<8){msg("authMessage","Informe um e-mail válido e uma senha com pelo menos 8 caracteres.");return;}
+    setBusy(b,true,"Criando...");
+    try{await signInEmail(email,password,true,"");}
+    catch(err){msg("authMessage",err.message||"Não foi possível criar o cadastro.");}
+    finally{b.disabled=false;b.textContent="Criar cadastro";}
+  });
   $("forgotBtn").addEventListener("click",()=>{$("recoveryPanel").classList.remove("hidden");$("recoveryEmail").value=$("email").value.trim();$("localRecoveryFields").classList.toggle("hidden",configured);$("recoveryAction").textContent=configured?"Enviar link de recuperação":"Redefinir senha";msg("recoveryMessage","");});
   $("cancelRecovery").addEventListener("click",()=>{$("recoveryPanel").classList.add("hidden");msg("recoveryMessage","");});
   $("recoveryAction").addEventListener("click",async()=>{try{if(configured&&passwordRecoveryMode){const np=$("newPassword").value;if(np.length<8||np!==$("confirmPassword").value)throw new Error("Confira a nova senha (mínimo 8 caracteres) e a confirmação.");const {error:upError}=await db.auth.updateUser({password:np});if(upError)throw upError;msg("recoveryMessage","Senha alterada com sucesso.",true);passwordRecoveryMode=false;return;}const email=$("recoveryEmail").value.trim();if(!email){msg("recoveryMessage","Informe o e-mail cadastrado.");return;}if(configured){const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.href.split("#")[0]});if(error)throw error;msg("recoveryMessage","Enviamos um link para seu e-mail. Abra-o neste mesmo site para definir uma nova senha.",true);}else{const normalizedEmail=email.trim().toLowerCase();const p=local.profiles.find(x=>(x.email||"").trim().toLowerCase()===normalizedEmail);const next=$("newPassword").value;const confirm=$("confirmPassword").value;if(!p)throw new Error("Não encontrei esse e-mail neste navegador. Confira se está usando o mesmo Chrome e a mesma versão do arquivo em que criou a conta.");if(next.length<8)throw new Error("A nova senha precisa ter pelo menos 8 caracteres.");if(next!==confirm)throw new Error("As senhas não coincidem.");p.demoPassword=next;saveLocal();msg("recoveryMessage","Senha alterada neste navegador. Faça login com a nova senha.",true);$("password").value=next;}}catch(err){msg("recoveryMessage",err.message||"Não foi possível recuperar a conta.");}});
