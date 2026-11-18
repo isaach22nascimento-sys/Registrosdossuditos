@@ -79,7 +79,7 @@
 
     <section id="appView" class="hidden">
       <div class="welcome-row"><div><p class="eyebrow" id="welcomeEyebrow">PAINEL DO PARTICIPANTE</p><h1 id="welcomeTitle">Bem-vindo ao <em>Registro</em></h1><p class="muted" id="welcomeCopy">Gerencie seu cargo e mantenha sua ficha atualizada.</p></div><div class="user-chip"><span class="avatar-mini" id="userInitial">S</span><span id="userLabel">Participante</span></div></div>
-      <nav class="tabs"><button class="tab active" data-tab="overview">Visão geral</button><button class="tab participant-only" data-tab="sheet">Minha ficha</button><button class="tab master-only hidden" data-tab="npcs">Arquivo de NPCs</button><button class="tab admin-only hidden" data-tab="admin">Administração</button></nav>
+      <nav class="tabs"><button class="tab active" data-tab="overview">Visão geral</button><button class="tab participant-only" data-tab="sheet">Minha ficha</button><button class="tab master-only hidden" data-tab="npcs">Arquivo de NPCs</button><button class="tab admin-only hidden" data-tab="admin">Administração</button><button class="tab admin-only hidden" data-tab="players">Arquivo de Súditos</button></nav>
 
       <section id="overviewTab" class="tab-content">
         <div class="stats-grid">
@@ -134,6 +134,11 @@
         <div id="npcList" class="npc-grid"><div class="empty-state">Carregando arquivo...</div></div>
       </section>
 
+      <section id="playersTab" class="tab-content hidden">
+        <div class="section-heading"><div><p class="eyebrow">CONSULTA ADMINISTRATIVA</p><h2>Arquivo de Súditos</h2><p class="muted">Visualização das fichas dos participantes. Esta área não permite editar fichas alheias.</p></div></div>
+        <div class="admin-grid"><div class="panel compact-panel"><h3>Participantes</h3><div id="playerArchiveList" class="admin-people"><p class="muted">Carregando...</p></div></div><div class="panel compact-panel"><h3 id="playerArchiveTitle">Selecione um participante</h3><div id="playerArchiveDetails"><p class="muted">A ficha aparecerá aqui.</p></div></div></div>
+      </section>
+
       <section id="adminTab" class="tab-content hidden">
         <div class="section-heading"><div><p class="eyebrow">CONTROLE DO GRUPO</p><h2>Administração</h2></div></div>
         <div class="admin-grid">
@@ -173,10 +178,11 @@
   function tabs(name){
     // Impede abrir áreas restritas mesmo que alguém tente chamar a aba manualmente.
     if(name==="admin" && !profile?.is_admin) name="overview";
+    if(name==="players" && !profile?.is_admin) name="overview";
     if(name==="npcs" && !isMaster && !profile?.is_admin) name="overview";
     if(name==="sheet" && isMaster) name="overview";
     document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
-    ["overview","sheet","admin","npcs"].forEach(t=>$(t+"Tab").classList.toggle("hidden",t!==name));
+    ["overview","sheet","admin","npcs","players"].forEach(t=>$(t+"Tab").classList.toggle("hidden",t!==name));
   }
   document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>tabs(b.dataset.tab)));
   function renderConnection(){ $("connectionState").classList.toggle("online",configured);$("connectionState").innerHTML=`<i></i>${configured?"Conectado ao Supabase":"Modo local (demonstração)"}`;}
@@ -225,9 +231,27 @@
       try{await loadNpcs();}
       catch(npcError){msg("npcMessage","Não foi possível carregar o arquivo de NPCs: "+(npcError.message||"erro desconhecido."));}
     }
-    if(profile?.is_admin)renderAdmin();
+    if(profile?.is_admin){renderAdmin();renderPlayerArchiveList();}
   }
   function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  async function renderPlayerArchiveList(){
+    const host=$("playerArchiveList");if(!host||!profile?.is_admin)return;
+    host.innerHTML=people.map(p=>`<button type="button" class="button button-outline full" style="margin:5px 0;text-align:left" data-player-view="${p.id}">${esc(p.display_name||p.email||"Participante")}</button>`).join("")||'<p class="muted">Nenhum participante cadastrado.</p>';
+    host.querySelectorAll("[data-player-view]").forEach(b=>b.addEventListener("click",()=>showPlayerSheet(b.dataset.playerView)));
+  }
+  async function showPlayerSheet(playerId){
+    const p=people.find(x=>x.id===playerId);if(!p||!profile?.is_admin)return;
+    $("playerArchiveTitle").textContent=p.display_name||p.email||"Ficha do participante";
+    const host=$("playerArchiveDetails");host.innerHTML='<p class="muted">Carregando ficha...</p>';
+    try{
+      let data={};
+      if(configured){const {data:d,error}=await db.from("character_sheets").select("*").eq("user_id",playerId).maybeSingle();if(error)throw error;data=d||{};}
+      else data=local.sheets[playerId]||{};
+      const fields=[["Nome",data.name],["Idade",data.age],["Gostos",data.likes],["Desgostos",data.dislikes],["Inventário",data.items],["Vida",data.life],["Sanidade",data.sanity],["Habilidades",data.skills]];
+      let photo="";if(configured&&data.photo_path){const {data:u}=db.storage.from(cfg.STORAGE_BUCKET||"character-photos").getPublicUrl(data.photo_path);if(u?.publicUrl)photo=`<img src="${esc(u.publicUrl)}" alt="Retrato" style="max-width:180px;border-radius:12px;margin-bottom:12px">`;}
+      host.innerHTML=photo+fields.map(([label,value])=>`<div style="margin:12px 0"><strong>${label}</strong><p style="white-space:pre-wrap">${esc(value||"Não informado")}</p></div>`).join("");
+    }catch(e){host.innerHTML=`<p class="message">Não foi possível carregar a ficha: ${esc(e.message||"erro desconhecido")}</p>`;}
+  }
   function renderAdmin(){ $("adminPeople").innerHTML=people.map(p=>{const a=assignments.find(x=>x.user_id===p.id);return `<div class="person-row"><span><strong>${esc(p.display_name||"Participante")}${p.id===user.id?" (você)":""}</strong><br><small style="color:var(--muted)">${esc(p.email||"E-mail não disponível")} · ${p.accepted_rules?"Regras aceitas":"Aguardando aceite"}${p.is_admin?" · ADMINISTRADOR":""}</small></span><select aria-label="Cargo de ${esc(p.display_name||p.email||"participante")}" data-person="${p.id}"><option value="">Sem cargo</option>${roles.map(r=>`<option value="${r.id}" ${a?.role_id===r.id?"selected":""}>${esc(r.title)}</option>`).join("")}</select></div>`}).join("")||'<p class="muted">Nenhum participante cadastrado.</p>';
     document.querySelectorAll("[data-person]").forEach(s=>s.addEventListener("change",async()=>{try{await assignRole(s.dataset.person,s.value||null);await loadData();toast("Atribuição atualizada.");}catch(e){toast(e.message);await loadData();}}));
     renderRoleManager();
